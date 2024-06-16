@@ -41,7 +41,8 @@ const App: FunctionComponent<IProps> = () => {
   return (
     <div>
       <h5 style={{ color: statusColor }}>
-        {statusMessage}
+        {statusMessage  + "check"}
+
       </h5>
     </div>
   );
