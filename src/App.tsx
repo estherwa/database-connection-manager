@@ -1,5 +1,8 @@
 import React, { FunctionComponent, useState, useEffect, useMemo } from 'react';
 import axios from 'axios';
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import Table from "./component/Table/Table";
+
 
 interface IProps {}
 
@@ -41,7 +44,13 @@ const App: FunctionComponent<IProps> = () => {
   return (
     <div>
       <h5 style={{ color: statusColor }}>
-        {statusMessage  + "check"}
+      <BrowserRouter>
+          <Routes>
+              <Route path="/" >
+                <Route index element={<Table/>}/>
+            </Route>
+          </Routes>
+        </BrowserRouter>
 
       </h5>
     </div>
