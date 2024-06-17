@@ -7,6 +7,7 @@ import axios from 'axios';
 import GeneralModal from '../GeneralModal/GeneralModal';
 import { Button } from '../../styles/button';
 import { RowData } from '../../pages/MainPage';
+import { useNavigate } from 'react-router-dom';
 
 const columns: GridColDef[] = [
   { field: 'databaseType', headerName: 'Database Type', width: 200 },
@@ -23,9 +24,11 @@ interface TableProps {
 
 
 const Table: FC<TableProps> = ({loading, rows}) => {
-  
+  const navigate = useNavigate();
 
-
+  const handleRowClick = (params: any) => {
+    navigate(`/details/${params.id}`);
+  };
 
   return (
     <Container>
@@ -38,6 +41,8 @@ const Table: FC<TableProps> = ({loading, rows}) => {
             rows={rows}
             columns={columns}
             sx={dataGridStyles}
+            onRowClick={handleRowClick}
+            
           />
         )}
       </Box>

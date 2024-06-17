@@ -44,7 +44,8 @@ const MainPage: FC = () => {
           setLoading(false);
         });
       }, []);
-
+      
+      
     return (
         <Container sx={{background:"#e5fbe5",  borderRadius: "12px"}}>
             <Typography style={{ display: 'flex', justifyContent: 'center', paddingBottom: '15px', paddingTop: '15px',alignSelf: 'center' }} variant="h4" gutterBottom>
@@ -59,7 +60,7 @@ const MainPage: FC = () => {
                 <ModalContent handleCloseModal={handleCloseModal} />
             </GeneralModal>
 
-            <Table   loading={loading} rows={rows} />
+            <Table loading={loading} rows={rows} />
         </Container>
     );
 };

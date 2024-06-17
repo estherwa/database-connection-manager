@@ -103,6 +103,14 @@
       "username": "dw",
       "password": "d3wde3wd",
       "type": "Snowflake"
+    },
+    {
+      "id": "9317",
+      "name": "test",
+      "url": "ip",
+      "username": "moplñ",
+      "password": "mpolñ,l",
+      "type": "Trino"
     }
   ]
 }

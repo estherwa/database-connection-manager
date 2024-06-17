@@ -3,6 +3,7 @@ import axios from 'axios';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Table from './component/Table/Table';
 import MainPage from './pages/MainPage';
+import DetailsPage from './pages/DetailsPage';
 
 
 
@@ -50,6 +51,7 @@ const App: FunctionComponent<IProps> = () => {
           <Routes>
               <Route path="/" >
               <Route index element={<MainPage/>}/>
+              <Route path="/details/:id" element={<DetailsPage />} />
             </Route>
           </Routes>
         </BrowserRouter>
