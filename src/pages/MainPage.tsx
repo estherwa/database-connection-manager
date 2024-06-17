@@ -6,7 +6,6 @@ import { Button } from '../styles/button';
 import ModalContent from '../component/ModalContent';
 import { GridRowsProp } from '@mui/x-data-grid';
 import axios from 'axios';
-import { log } from 'console';
 const URL = 'http://localhost:4000/databases'
 
 
@@ -21,7 +20,6 @@ const MainPage: FC = () => {
          if(isSubmitted)
          {
             setLoading(true);
-            console.log("eyy aqui")
             fetchData().then((data) => {
             setRows(data);
             setLoading(false);
