@@ -1,7 +1,7 @@
 {
   "databases": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Database 1",
       "url": "https://db1.example.com",
       "username": "user1",
@@ -9,7 +9,7 @@
       "type": "Snowflake"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Database 2",
       "url": "https://db2.example.com",
       "username": "user2",
@@ -17,12 +17,92 @@
       "type": "Trino"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Database 3",
       "url": "https://db3.example.com",
       "username": "user3",
       "password": "password3",
       "type": "MySQL"
+    },
+    {
+      "id": "2769",
+      "name": "esther",
+      "url": "https://github.com/estherwa/Tast-Management-Application",
+      "username": "estherrwa",
+      "password": "github123",
+      "type": "Snowflake"
+    },
+    {
+      "id": "ccf3",
+      "name": "test2",
+      "url": "https://github.com/estherwa",
+      "username": "estherwa99",
+      "password": "test1234",
+      "type": "Snowflake"
+    },
+    {
+      "id": "816f",
+      "name": "test2",
+      "url": "wsw",
+      "username": "2ws",
+      "password": "sws",
+      "type": "MySQL"
+    },
+    {
+      "id": "0ffd",
+      "name": "esther test",
+      "url": "dd",
+      "username": "3ed",
+      "password": "dwds",
+      "type": "MySQL"
+    },
+    {
+      "id": "a07f",
+      "name": "esther test",
+      "url": "ebhjdw",
+      "username": "estherla",
+      "password": "dwedewde",
+      "type": "Snowflake"
+    },
+    {
+      "id": "90f3",
+      "name": "esther test",
+      "url": "3e",
+      "username": "dd43we",
+      "password": "3es",
+      "type": "Trino"
+    },
+    {
+      "id": "133d",
+      "name": "Esther test 2",
+      "url": "dweded",
+      "username": "estherwa",
+      "password": "esefr",
+      "type": "Trino"
+    },
+    {
+      "id": "1f63",
+      "name": "Work",
+      "url": "ff4d",
+      "username": "de",
+      "password": "",
+      "type": "Trino"
+    },
+    {
+      "id": "ae60",
+      "name": "work2",
+      "url": "fde",
+      "username": "dewefc",
+      "password": "frwds",
+      "type": "Trino"
+    },
+    {
+      "id": "d2f4",
+      "name": "done last test",
+      "url": "e23de3ed3",
+      "username": "dw",
+      "password": "d3wde3wd",
+      "type": "Snowflake"
     }
   ]
 }

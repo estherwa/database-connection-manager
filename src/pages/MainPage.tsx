@@ -1,25 +1,55 @@
-import React, { useState, FC } from 'react';
+import React, { useState, FC, useEffect } from 'react';
 import { Container, Typography, Button as MuiButton, Autocomplete } from '@mui/material';
 import GeneralModal from '../component/GeneralModal/GeneralModal';
 import Table from '../component/Table/Table';
 import { Button } from '../styles/button';
 import ModalContent from '../component/ModalContent';
+import { GridRowsProp } from '@mui/x-data-grid';
+import axios from 'axios';
+import { log } from 'console';
+const URL = 'http://localhost:4000/databases'
 
-const typeOptions = [
-    { label: 'Snowflake', value: 'Snowflake' },
-    { label: 'Trino', value: 'Trino' },
-    { label: 'MySQL', value: 'MySQL' }
-];
+
 const MainPage: FC = () => {
     const [handleOpen, setHandleOpen] = useState(false);
-
-    const handleCloseModal = (): void => {
+    const [rows, setRows] = useState<GridRowsProp<RowData>>([]);
+    const [loading, setLoading] = useState(true);
+    
+    const handleCloseModal = (isSubmitted= false): void => {
         setHandleOpen(false);
+
+         if(isSubmitted)
+         {
+            setLoading(true);
+            console.log("eyy aqui")
+            fetchData().then((data) => {
+            setRows(data);
+            setLoading(false);
+            })
+        }
     };
+    
+ const fetchData = async (): Promise<RowData[]> => {
+    const response = await axios.get(URL);
+    const data: DatabaseItem[] = response.data;
+        return data.map((item) => ({
+          id: item.id,
+          databaseType: item.type,
+          name: item.name,
+          username: item.username,
+        }));
+  };
+
+    useEffect(() => {
+        fetchData().then((data) => {
+          setRows(data);
+          setLoading(false);
+        });
+      }, []);
 
     return (
-        <Container>
-            <Typography style={{ display: 'flex', justifyContent: 'center', paddingBottom: '15px', alignSelf: 'center' }} variant="h4" gutterBottom>
+        <Container sx={{background:"#e5fbe5",  borderRadius: "12px"}}>
+            <Typography style={{ display: 'flex', justifyContent: 'center', paddingBottom: '15px', paddingTop: '15px',alignSelf: 'center' }} variant="h4" gutterBottom>
                 Database Information
             </Typography>
 
@@ -31,9 +61,23 @@ const MainPage: FC = () => {
                 <ModalContent handleCloseModal={handleCloseModal} />
             </GeneralModal>
 
-            <Table />
+            <Table   loading={loading} rows={rows} />
         </Container>
     );
 };
 
 export default MainPage;
+export interface RowData {
+    id: number;
+    databaseType: string;
+    name: string;
+    username: string;
+  }
+  export interface DatabaseItem {
+    id: number;
+    name: string;
+    url: string;
+    username: string;
+    password: string;
+    type: string;
+  }

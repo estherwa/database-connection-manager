@@ -6,23 +6,7 @@ import { dataGridStyles } from './Table.style';
 import axios from 'axios';
 import GeneralModal from '../GeneralModal/GeneralModal';
 import { Button } from '../../styles/button';
-
-const URL = 'http://localhost:4000/databases'
-
-interface RowData {
-  id: number;
-  databaseType: string;
-  name: string;
-  username: string;
-}
-export interface DatabaseItem {
-  id: number;
-  name: string;
-  url: string;
-  username: string;
-  password: string;
-  type: string;
-}
+import { RowData } from '../../pages/MainPage';
 
 const columns: GridColDef[] = [
   { field: 'databaseType', headerName: 'Database Type', width: 200 },
@@ -32,28 +16,16 @@ const columns: GridColDef[] = [
 
 
 
-const Table: FC = () => {
-  const [rows, setRows] = useState<GridRowsProp<RowData>>([]);
-  const [loading, setLoading] = useState(true);
+interface TableProps {
+ loading : boolean;
+ rows: readonly RowData[];
+}
 
 
-  const fetchData = async (): Promise<RowData[]> => {
-    const response = await axios.get(URL);
-    const data: DatabaseItem[] = response.data;
-        return data.map((item) => ({
-          id: item.id,
-          databaseType: item.type,
-          name: item.name,
-          username: item.username,
-        }));
-  };
+const Table: FC<TableProps> = ({loading, rows}) => {
   
-  useEffect(() => {
-    fetchData().then((data) => {
-      setRows(data);
-      setLoading(false);
-    });
-  }, []);
+
+
 
   return (
     <Container>
