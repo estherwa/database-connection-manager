@@ -7,14 +7,13 @@ export const StyledDialog = styled(Dialog)(
 
     .MuiDialogContent-root{
         overflow: hidden;
-        padding:0;
     }
   
     & > .MuiDialog-container > .MuiPaper-root {
         display: flex;
         align-items: center;
         position: absolute;
-        padding: 30px 60px;
+        padding: 60px 170px 60px 170px;
         border-radius: 24px;
         max-width:100%;
         box-sizing: border-box;

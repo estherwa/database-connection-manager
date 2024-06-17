@@ -14,14 +14,16 @@ type Props = {
   hoverColor?: string;
   custom_style?: object;
   isDisabled?: boolean;
+  left? : string ;
 };
 
 export const Button = styled.div.attrs({ className: "customButton" })<Props>(
-  ({ theme: { colors }, background, color, width, height, paddingVertical, paddingHorizontal, borderRadius, border, fontSize, hoverBackground, hoverColor, custom_style, isDisabled }) => `
+  ({ theme: { colors }, background, color, width,left, height, paddingVertical, paddingHorizontal, borderRadius, border, fontSize, hoverBackground, hoverColor, custom_style, isDisabled }) => `
     background-color: ${background || "gray"};
     color: ${color || "white"};
     height: ${height || "fit-content"};
     width: ${width || "40px"};
+    left: ${left || "4px"};
     padding: ${paddingVertical !== undefined ? paddingVertical : 10}px ${paddingHorizontal !== undefined ? paddingHorizontal : 10}px;
     border-radius: ${borderRadius !== undefined ? borderRadius : 6}px; // Adjust border radius for smaller button
     border: ${border || `none`};
