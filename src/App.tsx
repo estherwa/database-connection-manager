@@ -1,7 +1,9 @@
 import React, { FunctionComponent, useState, useEffect, useMemo } from 'react';
 import axios from 'axios';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import Table from "./component/Table/Table";
+import Table from './component/Table/Table';
+import MainPage from './pages/MainPage';
+
 
 
 interface IProps {}
@@ -47,7 +49,7 @@ const App: FunctionComponent<IProps> = () => {
       <BrowserRouter>
           <Routes>
               <Route path="/" >
-                <Route index element={<Table/>}/>
+              <Route index element={<MainPage/>}/>
             </Route>
           </Routes>
         </BrowserRouter>
