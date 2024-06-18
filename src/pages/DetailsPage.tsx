@@ -1,15 +1,18 @@
 import React, { useState, FC, useEffect } from 'react';
 import { Container, Typography, CircularProgress, Alert, Box } from '@mui/material';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { Button } from '../styles/button';
 
 const URL = 'http://localhost:4000/databases'
+
+
 const DetailsPage: FC = () => {
   const { id } = useParams<DatabaseDetailParams>();
   const [loading, setLoading] = useState<boolean>(true);
   const [database, setDatabase] = useState<DatabaseItem | null>(null);
   const [error, setError] = useState<string | null>(null);
-
+  const navigate = useNavigate();
   useEffect(() => {
     if (id) {
       getDatabaseById(id)
@@ -23,6 +26,10 @@ const DetailsPage: FC = () => {
         });
     }
   }, [id]);
+
+  const navigateBack = () => {
+    navigate("/");
+  };
 
   const getDatabaseById = async (id: string | number): Promise<DatabaseItem> => {
     try {
@@ -42,6 +49,7 @@ const DetailsPage: FC = () => {
     { key: 'password', label: 'Password' },
     { key: 'type', label: 'Type' },
   ];
+
 
   return (
     <Container>
@@ -65,20 +73,24 @@ const DetailsPage: FC = () => {
       ) : (
         <Alert severity="info">No database found</Alert>
       )}
+
+      <Button width="30px" paddingVertical={10} paddingHorizontal={15} onClick={() => navigateBack()}>
+        Go back to main page
+      </Button>
     </Container>
   );
 };
 
 export default DetailsPage;
 export interface DatabaseItem {
-    id: number;
-    name: string;
-    url: string;
-    username: string;
-    password: string;
-    type: string;
-  }
-  
-  type DatabaseDetailParams = {
-    id: string;
-  };
+  id: number;
+  name: string;
+  url: string;
+  username: string;
+  password: string;
+  type: string;
+}
+
+type DatabaseDetailParams = {
+  id: string;
+};
