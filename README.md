@@ -1,4 +1,7 @@
 
+
+![FormExample](/public/images/databaseInfo.png)
+![FormExample](/public/images/databaseInfo2.png)
 ## Getting Started
 
 To get started with this project, follow the instructions below:
