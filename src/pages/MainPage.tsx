@@ -6,7 +6,6 @@ import { Button } from '../styles/button';
 import ModalContent from '../component/ModalContent';
 import { GridRowsProp } from '@mui/x-data-grid';
 import axios from 'axios';
-import styled from 'styled-components';
 const URL = 'http://localhost:4000/databases'
 
 
@@ -17,7 +16,6 @@ const MainPage: FC = () => {
 
     const handleCloseModal = (isSubmitted = false): void => {
         setHandleOpen(false);
-
         if (isSubmitted) {
             setLoading(true);
             fetchData().then((data) => {
@@ -72,6 +70,7 @@ const MainPage: FC = () => {
 };
 
 export default MainPage;
+//---------------------------------------------------------------------------
 export interface RowData {
     id: number;
     databaseType: string;

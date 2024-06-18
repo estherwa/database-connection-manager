@@ -1,27 +1,10 @@
 import React, { useState, FC } from 'react';
 import { Container, Typography, Button as MuiButton, Autocomplete } from '@mui/material';
-import GeneralModal from '../component/GeneralModal/GeneralModal';
-import Table  from '../component/Table/Table';
 import { Button } from '../styles/button';
-import { TextField, Select, MenuItem, FormControl, InputLabel, FormHelperText } from '@mui/material';
+import { TextField,  FormControl, FormHelperText } from '@mui/material';
 import axios from 'axios';
 import { useNavigate } from 'react-router';
 const URL = 'http://localhost:4000/databases'
-const typeOptions = [
-    { label: 'Snowflake', value: 'Snowflake' },
-    { label: 'Trino', value: 'Trino' },
-    { label: 'MySQL', value: 'MySQL' }
-];
-
-export interface DatabaseBody {
-
-    name: string;
-    url: string;
-    username: string;
-    password: string;
-    type: string;
-  }
-
 interface ModalContentProps {
     handleCloseModal: (isSubmitted?: boolean) => void;
 }
@@ -44,10 +27,8 @@ const ModalContent: FC<ModalContentProps> = ({ handleCloseModal }) => {
     
     };
 
-   
     const addDatabase = async (databaseDetails: DatabaseBody): Promise<void> => {
         try {
-
           const response = await axios.post(URL, databaseDetails);
           console.log('Database added successfully:', response.data);
     
@@ -57,12 +38,7 @@ const ModalContent: FC<ModalContentProps> = ({ handleCloseModal }) => {
         }
       };
    
-   
-
-    
-
     const handleSubmit = async(e: React.FormEvent) => {
-
         const databaseDetails:DatabaseBody = {
             name: databaseName,
             url: url,
@@ -71,11 +47,8 @@ const ModalContent: FC<ModalContentProps> = ({ handleCloseModal }) => {
             type: type
           };
           await addDatabase(databaseDetails);
-        console.log({ databaseName, url, username, userPassword, type });
         handleCloseModal(true);
     };
-
-    
 
     return (
         <Container>
@@ -141,3 +114,16 @@ const ModalContent: FC<ModalContentProps> = ({ handleCloseModal }) => {
 };
 
 export default ModalContent;
+export interface DatabaseBody {
+    name: string;
+    url: string;
+    username: string;
+    password: string;
+    type: string;
+  }
+
+const typeOptions = [
+    { label: 'Snowflake', value: 'Snowflake' },
+    { label: 'Trino', value: 'Trino' },
+    { label: 'MySQL', value: 'MySQL' }
+];

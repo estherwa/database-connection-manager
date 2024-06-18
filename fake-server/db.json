@@ -119,6 +119,14 @@
       "username": "estherwa",
       "password": "DEEDEWD",
       "type": "Snowflake"
+    },
+    {
+      "id": "de9d",
+      "name": "",
+      "url": "",
+      "username": "",
+      "password": "",
+      "type": "Trino"
     }
   ]
 }
