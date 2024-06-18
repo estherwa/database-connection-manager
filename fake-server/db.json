@@ -111,6 +111,14 @@
       "username": "moplñ",
       "password": "mpolñ,l",
       "type": "Trino"
+    },
+    {
+      "id": "b44f",
+      "name": "TODAY TEST ESTHER",
+      "url": "ewdw@ekome",
+      "username": "estherwa",
+      "password": "DEEDEWD",
+      "type": "Snowflake"
     }
   ]
 }

@@ -27,16 +27,23 @@ const MainPage: FC = () => {
         }
     };
     
- const fetchData = async (): Promise<RowData[]> => {
-    const response = await axios.get(URL);
-    const data: DatabaseItem[] = response.data;
-        return data.map((item) => ({
-          id: item.id,
-          databaseType: item.type,
-          name: item.name,
-          username: item.username,
-        }));
-  };
+    const fetchData = async (): Promise<RowData[]> => {
+        try {
+            const response = await axios.get(URL);
+            const data: DatabaseItem[] = response.data;
+                return data.map((item) => ({
+                    id: item.id,
+                    databaseType: item.type,
+                    name: item.name,
+                    username: item.username,
+                }));
+            
+        } catch (error) {
+            // handle the error
+            console.error("Error fetching data:", error);
+            throw error; // or return an empty array or throw an error
+        }
+    };
 
     useEffect(() => {
         fetchData().then((data) => {
@@ -45,7 +52,7 @@ const MainPage: FC = () => {
         });
       }, []);
       
-      
+
     return (
         <Container sx={{background:"#e5fbe5",  borderRadius: "12px"}}>
             <Typography style={{ display: 'flex', justifyContent: 'center', paddingBottom: '15px', paddingTop: '15px',alignSelf: 'center' }} variant="h4" gutterBottom>
