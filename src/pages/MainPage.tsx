@@ -6,6 +6,7 @@ import { Button } from '../styles/button';
 import ModalContent from '../component/ModalContent';
 import { GridRowsProp } from '@mui/x-data-grid';
 import axios from 'axios';
+import styled from 'styled-components';
 const URL = 'http://localhost:4000/databases'
 
 
@@ -52,8 +53,8 @@ const MainPage: FC = () => {
 
 
     return (
-        <Container sx={{ background: "#e5fbe5", borderRadius: "12px" }}>
-            <Typography style={{ display: 'flex', justifyContent: 'center', paddingBottom: '15px', paddingTop: '15px', alignSelf: 'center' }} variant="h4" gutterBottom>
+        <Container sx={styles.StyledContainer}>
+            <Typography style={styles.StyledTitle } variant="h4" gutterBottom>
                 Database Information
             </Typography>
 
@@ -85,3 +86,27 @@ export interface DatabaseItem {
     password: string;
     type: string;
 }
+//------------------------------------------------------------------------------------------------
+const styles = {
+    StyledContainer: {
+      background: '#e5fbe5',
+      borderRadius: '12px',
+
+    },
+    StyledButtonContainer: {
+      position: 'relative',
+      height: '10vh',
+      width: '100%',
+      left: '42%',
+
+    },
+    StyledTitle: {
+        display: 'flex', 
+        justifyContent: 'center',
+         paddingBottom: '15px', 
+         paddingTop: '15px',
+          alignSelf: 'center'
+      }
+
+  };
+  
