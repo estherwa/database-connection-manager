@@ -13,49 +13,47 @@ const MainPage: FC = () => {
     const [handleOpen, setHandleOpen] = useState(false);
     const [rows, setRows] = useState<GridRowsProp<RowData>>([]);
     const [loading, setLoading] = useState(true);
-    
-    const handleCloseModal = (isSubmitted= false): void => {
+
+    const handleCloseModal = (isSubmitted = false): void => {
         setHandleOpen(false);
 
-         if(isSubmitted)
-         {
+        if (isSubmitted) {
             setLoading(true);
             fetchData().then((data) => {
-            setRows(data);
-            setLoading(false);
+                setRows(data);
+                setLoading(false);
             })
         }
     };
-    
+
     const fetchData = async (): Promise<RowData[]> => {
         try {
             const response = await axios.get(URL);
             const data: DatabaseItem[] = response.data;
-                return data.map((item) => ({
-                    id: item.id,
-                    databaseType: item.type,
-                    name: item.name,
-                    username: item.username,
-                }));
-            
+            return data.map((item) => ({
+                id: item.id,
+                databaseType: item.type,
+                name: item.name,
+                username: item.username,
+            }));
+
         } catch (error) {
-            // handle the error
             console.error("Error fetching data:", error);
-            throw error; // or return an empty array or throw an error
+            throw error;
         }
     };
 
     useEffect(() => {
         fetchData().then((data) => {
-          setRows(data);
-          setLoading(false);
+            setRows(data);
+            setLoading(false);
         });
-      }, []);
-      
+    }, []);
+
 
     return (
-        <Container sx={{background:"#e5fbe5",  borderRadius: "12px"}}>
-            <Typography style={{ display: 'flex', justifyContent: 'center', paddingBottom: '15px', paddingTop: '15px',alignSelf: 'center' }} variant="h4" gutterBottom>
+        <Container sx={{ background: "#e5fbe5", borderRadius: "12px" }}>
+            <Typography style={{ display: 'flex', justifyContent: 'center', paddingBottom: '15px', paddingTop: '15px', alignSelf: 'center' }} variant="h4" gutterBottom>
                 Database Information
             </Typography>
 
@@ -78,12 +76,12 @@ export interface RowData {
     databaseType: string;
     name: string;
     username: string;
-  }
-  export interface DatabaseItem {
+}
+export interface DatabaseItem {
     id: number;
     name: string;
     url: string;
     username: string;
     password: string;
     type: string;
-  }
+}

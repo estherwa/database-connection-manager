@@ -13,7 +13,7 @@ type GeneralModalProps = {
 };
 
 
-const GeneralModal = ({ displayModal, btnComp, children, displayClose = true, customStyle, handleCloseModal }: GeneralModalProps) => {
+const GeneralModal = ({ displayModal, btnComp, children, displayClose = true, handleCloseModal }: GeneralModalProps) => {
   return (
     <div style={{ position: "absolute" }}>
       <StyledDialog open={displayModal} onClose={handleCloseModal} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
